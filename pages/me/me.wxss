@@ -1,0 +1,281 @@
+/**index.wxss**/
+page{
+  background: #fafafa;
+  animation-name: enter;
+  animation-duration: 1s;
+}
+
+.userinfo-wrapper{
+  background-color: rgb(219, 91, 91);
+  background-image: url("https://cloud-minapp-24046.cloud.ifanrusercontent.com/me-header.png");
+  background-size: cover; 
+  top:0;
+  left:0;
+  width:100%;
+  height: 380rpx;
+}
+
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 120rpx;
+  padding-left: 50rpx;
+
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1.5px solid white;
+  margin: 20rpx;
+  border-radius: 50%;
+  animation-name: enter;
+  animation-duration: 2s;
+}
+
+.userinfo-nickname {
+  color: white;
+  padding-left: 7px;
+}
+
+.usermotto {
+  margin-top: 140rpx;
+  text-align:center;
+  align-items: center;
+}
+
+
+.ucl {
+  margin-top:-80rpx;
+  margin-left:30rpx;
+  margin-right:30rpx;
+  background-color: #fff;
+  padding: 15px 20px;
+  box-shadow:0px 3px 10px rgba(232, 73, 73, 0.281);
+  word-break:break-all;
+  border-radius: 6px;
+
+  animation-name: enter;
+  animation-duration: 1s;
+}
+
+
+.btn_wechat{ 
+  padding: 0rpx 40rpx;
+  border: none;
+  background: red;
+  text-align: right;
+  margin: auto 0px;
+  border-radius: 100px;
+  font-size:30rpx;
+}
+
+
+.btn{
+  width: 100px;
+  height: 35px;
+  background: #3d3d3d;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  margin: auto 0px;
+  border-radius: 100px; 
+}
+
+/* 遮罩层 */
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 9000;
+    opacity: 0.5;
+}
+ 
+/* 弹出层 */
+.modalDlg{
+    width: 70%;
+    position: fixed;
+    top: 110px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation-name: enter;
+    animation-duration: 1s;
+}
+
+/* 弹出层里面的图片 */
+.modalDlg image{
+  width: 120px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+/* 弹出层里面的按钮 */
+.ok{
+  width: 80px;
+  height: 35px;
+  background: #44b549;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  margin:20px auto;
+  border-radius: 100px;
+}
+
+/* 弹出层里面的文字 */
+.text{
+  text-align: justify;
+  font-size: 14px;
+  color: #666;
+  width: 180px;
+  margin-top: 10px;
+}
+
+
+.notBound{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 90rpx;
+  color:grey;
+  animation-name: enter;
+  animation-duration: 1s;
+}
+
+
+
+
+
+
+
+
+/* UCL Essential Styles */
+
+.essentials{
+  color:rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  animation-name: enter;
+  animation-duration: 2s;
+}
+
+.sub_title_text{
+  text-align:left;
+  padding:20px;
+  color:silver;
+  font-size:30rpx;
+  padding-top:30px;
+  padding-bottom:10px;
+}
+
+.slide-image{
+  position: relative;
+  height:110rpx;
+  width: 42%;
+  padding-top: 7px;
+  padding-bottom: 14px;
+  background-blend-mode: overlay; 
+  margin-left: 5%;
+}
+
+
+.slide-text{
+  float: right;
+  text-align: right;
+  padding: 40rpx;
+  font-size:32rpx;
+  vertical-align: middle;
+  
+}
+.slide-back{
+  float: right;
+}
+
+.icons{
+  position: absolute;
+  top: 23px;
+  left: 15px;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+
+.icon_circle{
+    width:54px;
+    height:54px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 10px rgba(0,0,0,0.16);
+    border-radius:50%;
+}
+
+.about_block{
+  display: flex;
+  height: 110rpx;
+  width: 42%;
+  padding-top: 7px;
+  padding-bottom: 14px;
+  background-blend-mode: overlay;
+  margin-left: 5%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.text_circle{
+  text-align: right;
+  font-size: 32rpx;
+  padding: 10rpx;
+  opacity: 0.6;
+}
+
+.icon_about{
+  width: 25px;
+  height: 25px;
+  padding: 14px;
+
+}
+
+
+/* freshers book */
+
+.book {
+  color: white;
+  font-size: 20px;
+  text-align: right;
+  line-height: 50px;
+  background: url('https://cloud-minapp-24046.cloud.ifanrusercontent.com/1hpfbGFExD5Pl1fS.png'), #E70A52 !important;
+  background-size: 1000rpx !important;
+  animation: moving 30s infinite;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+@keyframes moving {
+  0% {
+      background-position: 0% 0%
+  }
+
+  50% {
+      background-position: 100% 100%
+  }
+
+  100% {
+      background-position: 0% 0%
+  }
+}

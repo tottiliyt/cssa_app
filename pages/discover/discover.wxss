@@ -1,0 +1,177 @@
+page{
+  background: #f7f7f7;
+  animation-name: enter;
+  animation-duration: 0.8s;
+  a:195, 112, 255, rgb(142, 102, 232), rgb(129, 125, 255), rgb(102, 132, 232) rgb(112, 183, 255)
+}
+
+
+/* publish */
+
+.publish-textarea{
+  border: 1px solid #d8d8d8;
+  border-radius: 30px;
+  font-size: 30rpx;
+
+  margin-top: 5rpx;
+  color:silver;
+  line-height: 65rpx;
+  width: 70%;
+}
+
+.publish-text{
+  display:inline-block;
+  margin-left: 14px;
+  /* margin-right: 30px; */
+  /* margin-top: 6px; */
+  font-size: 12px;
+}
+
+.publish{
+  height: 70rpx;
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+/* ref: https://stackoverflow.com/questions/14500159/how-to-apply-a-css-gradient-over-a-text-from-a-transparent-to-an-opaque-colour  */
+.images {
+  position: relative;
+}
+
+.images:after {
+  position: absolute;
+  bottom: 0;  
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: linear-gradient(to left,
+     rgba(255,255,255, 1) 0%, 
+     rgba(255,255,255, 0) 15%
+  );
+  pointer-events: none; /* so the text is still selectable */
+}
+
+
+
+
+
+.center-div{
+  text-align: center;
+  
+}
+
+
+.mark{
+  /* red tooltip, not in use */
+  padding:3px;
+  padding-left:8px;
+  padding-right:8px;
+  margin-top:5px;
+  font-size:12px;
+  background:rgb(224, 0, 0);
+  opacity: 0.7;
+  border-radius: 7px;
+}
+
+
+.post_action_list{
+  height: 70rpx;
+  margin-top:10px;
+  padding-top: 10px;
+  border-top: 1px solid rgb(243, 243, 243);
+}
+
+
+
+/* new feed style */
+
+.post_user{
+  overflow: scroll; 
+  font-size: 25rpx;
+}
+
+.post-avatar-resize{
+  width:20px;height:20px;
+}
+
+.post_info{
+  line-height:50rpx;
+  display:flex;
+  flex-direction: row;
+}
+
+.post_time{
+  margin-left:auto;
+  min-width: 35%;
+  text-align: right;
+}
+
+.post_action_list{
+  height: 50rpx;
+}
+
+.post{
+  margin-left:20rpx;
+  margin-right:20rpx;
+  border-radius: 5px;
+}
+
+.view_preinfo{
+  padding-bottom:10px;
+  height:50rpx;
+  overflow: hidden;
+  display: flex;
+}
+
+.post_title{
+  font-size:30rpx;
+  opacity:0.9;
+  color: rgb(0, 106, 177);
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  white-space:nowrap;   
+  text-overflow: ellipsis; 
+
+
+}
+
+.post_zone{
+  margin-left: auto;
+  min-width: 60px;
+}
+
+
+
+.float_button{
+  line-height: 40px;
+  transition: margin-bottom 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.publish_button_hide{
+  margin-bottom: -60px;
+  opacity: 0;
+}
+
+.inline_button{
+  display: inline-block;
+  margin: 10px 7px;
+  overflow: hidden;
+}
+
+.scrollview_x{
+  overflow:hidden;
+  white-space:nowrap;
+  width: auto;
+  transition: opacity 0.8s ease-out;
+}
+
+.zero_opacity{
+  opacity: 0;
+  visibility: hidden;
+}
+
+

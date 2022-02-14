@@ -1,0 +1,174 @@
+<import src="../../app/template.wxml"/>
+
+<view class='navbar_placeholder {{showPlaceholder? "nav_placeholder_show":"nav_placeholder_hide"}}'></view>
+
+
+<view>
+
+<!-- header block -->
+<view class="userinfo-wrapper" >
+    <view class="userinfo">
+    
+      <block wx:if="{{hasUserInfo}}">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+
+      <block wx:else> 
+        <text class="userinfo-nickname" style="padding-top:60rpx;opacity:0.5;font-size:35rpx">JHU在校生活平台</text> 
+      </block>
+      
+    </view>
+  </view>
+
+
+<!-- ucl float block -->
+
+<view wx:if="{{!hasUserInfo}}" class="ucl">
+
+  <block wx:if="{{!hasUserInfo}}">
+    <view class="notBound">
+      <view style='font-size:35rpx;'>使用微信一键登录</view>
+          <button type="primary" bindtap="getUserInfo" class="btn_wechat"> 立即登录 </button>
+    </view>
+  </block>
+
+
+    <block wx:if="{{hasUserInfo && !ucl}}">
+      <view class="notBound">
+          <view style='font-size:35rpx;'>{{sent?'授权后，请点击验证刷新':'您还未绑定UCL账号'}}</view>
+          <view bindtap="{{sent?'check':'showBindModal'}}" class="btn">{{sent?'验证':'立即绑定'}}</view>
+      </view>
+    </block>
+
+
+    <block wx:if="{{hasUserInfo && ucl}}">
+      <view class="notBound" style='align-items: left;' >
+          <image src="{{ucl_logo}}" style='height:40px;width:80px;padding:5px;opacity:0.7' mode='aspectFit'/>
+          <view style="text-align:right;font-size:12px;margin-top:5px">
+            <view style="font-size:16px">{{ucl.full_name}}</view>
+            <view>{{ucl.department}}</view>
+          </view>
+      </view>
+    </block>
+
+</view>
+
+
+<!-- UCL Essentials block -->
+
+<view>
+  <view class="sub_title_text">JHU必备</view>
+    <view class="essentials">
+      <view class="slide-image gradient1" bindtap="">
+          <image class="icons" src="{{imgDomain}}icon-schedule-new-white.png"/>
+          <view class="slide-text" style="margin-top:-18rpx;">功能主标题
+          <view style='opacity:0.6;font-size:12px'>副标题</view>
+          </view>
+          
+      </view>
+
+      <view class="slide-image gradient2" bindtap=''>
+          <image class="icons" src="{{imgDomain}}icon-bookmark.png"/>
+          <view class="slide-text" style="margin-top:-18rpx;">功能主标题
+          <view style='opacity:0.6;font-size:12px'>副标题</view>
+          </view>
+          
+      </view>
+
+      <view class="slide-image gradient5" bindtap=''>
+          <image class="icons" src="{{imgDomain}}icon-find.png"/>
+          <view class="slide-text">功能主标题</view>
+      </view>
+
+      <view class="slide-image gradient3" bindtap=''>
+          <image class="icons" src="{{imgDomain}}icon-new-classroom.png"/>
+          <view class="slide-text">功能主标题</view>
+      </view>
+
+       <view class="slide-image gradient6" bindtap='goToTfl'>
+          <image class="icons" src="{{imgDomain}}icon-bus-white.png"/>
+          <view class="slide-text">公交时间</view>
+      </view>
+      
+      <view class="slide-image gradient4" bindtap='goToMap'>
+          <image class="icons" src="{{imgDomain}}icon-map.png"/>
+          <view class="slide-text">JUH地图</view>
+      </view>
+      
+    </view>
+
+</view>
+
+
+<!-- My App block -->
+<view class="sub_title_text">我的学联社区</view>
+
+
+<view style="display:flex;flex-wrap:wrap;">
+
+<block wx:for="{{eventUrls}}" wx:for-index="idx" wx:key="{{item.id}}">
+       <view class="about_block" bindtap="bindWeb" data-url="{{item.link}}">
+          <view class="icon_circle">
+              <image class="icon_about" src="{{item.img ? item.img : imgDomain + 'icon-logo.png'}}"/>
+          </view>
+          <view class="text_circle">{{item.title}}</view>
+      </view>
+</block>
+
+</view>
+      
+
+<!-- Freshers book -->
+<view bindtap="goToBook" class="block block_fullwidth gradient6 book">
+	JHUCSSA官方新生手册 >
+</view>
+
+
+<!-- beta only, feedback block -->
+  <view class="post" style='font-size:12px;color:grey' >
+    <image class="post_icons" src="{{imgInfo}}" style="padding:0;"/>
+    感谢测试JHU在校生活平台内测版，欢迎提出任何新功能建议以及改进！<!--如果您想加入体验计划，请点击下方按钮并留下您的邮箱。-->点击下方按钮联系客服（可撩），我们将尽快回复~
+    <button style="font-size:13px;margin-top:10px" open-type='contact' bindcontact="handleContact">联系我们</button>
+  </view>
+
+
+
+
+  <!-- 尾部logo block -->
+  <view class="usermotto" bindtap='goToAbout'>
+    <image src="{{logo}}" style='max-width:60%;height:140rpx' mode='aspectFit'/>
+  </view>
+  <view class="post_loading_text" style="padding:0;margin-bottom:40rpx;font-size:11px;opacity:0.4;">Beta公测版 1.6.1</view>
+  
+</view>
+
+
+
+<template is="footer_copyright"/> 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UCL邮箱验证弹窗, 非block -->
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <!-- 弹出层 -->
+  <view class="modalDlg" wx:if="{{showModal}}">
+  <!-- 二维码或其他图片 -->
+      <image src="{{ucl_logo}}" style='max-width:80%;height:50px;padding:10px' mode='aspectFit'/>
+      <input bindinput="bindSearch" class="search-input" maxlength="50" placeholder="xxxx@ucl.ac.uk" />
+      <text class="text">请输入您的JHU邮箱地址，以接收验证信息。</text>
+      
+      <view class="notBound" style='height:80px;'>
+        <view bindtap="ok" style="font-size:13px;padding:10px">取消</view>
+        <view bindtap="invokeSend" class="ok">发送</view>
+      </view>
+  </view>

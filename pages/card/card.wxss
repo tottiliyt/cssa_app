@@ -1,0 +1,192 @@
+page{
+    background-image: linear-gradient(180deg, #AA2424 0%, #1b0000 100%);
+    /* background: url('https://cloud-minapp-24046.cloud.ifanrusercontent.com/me-header.png'); */
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35vh;
+}
+
+.text{
+  color:white;
+  opacity: 0.5;
+  font-size:26rpx;
+  text-align:center;
+}
+
+.card{
+    height: 396rpx;
+    width: 660rpx;
+    border-radius: 5px;
+    box-shadow: -4px 18px 51px -19px rgba(253, 119, 74, 0.7);
+    transform-style: preserve-3d;
+}
+
+.scene {    
+    perspective: 30em;
+}
+
+.cardOverlay{
+    width:100%;height:100%; position: absolute;top:0;left:0;
+}
+
+.card_block{
+  margin: 5%;
+  padding: 20px 25px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+
+  color:white;
+  font-size: 15px;
+  overflow: hidden;
+
+  animation-name: enter;
+  animation-duration: 2s;
+
+  transition: 2s;
+}
+
+.enter{
+  animation-name: enter;
+  animation-duration: 2s;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1.5px solid white;
+  border-radius: 50%;
+
+  margin-right: 5px;
+}
+
+.userinfo-nickname {
+  color: white;
+  padding-left: 7px;
+  font-size: 15px;
+  flex-grow: 1;
+}
+
+.userinfo-text{
+  color: white;
+  opacity: 0.8;
+  font-size: 13px;
+  text-align: right;
+}
+
+.rest_name{
+  color: white;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.rest_flex{
+  color:white;
+  font-size: 15px;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.confirm{
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+  padding: 10px 20px;
+  border-top: solid 1px rgba(119, 119, 119, 0.5);
+
+}
+
+.button_yn{
+  flex-grow: 1;
+  opacity: 0.5;
+  text-align: center;
+  padding: 10px 20px;
+  border-top: solid 1px rgba(119, 119, 119, 0.5);
+}
+
+
+.clock{
+  text-align:center;
+  font-size: 12px;
+  text-shadow: -0 -1px 4px rgba(255, 255, 255, 0.5), -0 -2px 10px rgba(255, 255, 0, 0.5), -0 -10px 20px rgba(255, 128, 0, 0.5), -0 -18px 40px rgba(239, 0, 0, 0.5);
+  animation-duration: 5s;
+  animation-name: flame;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  opacity: 0.9;
+}
+
+.usermotto {
+  margin: 70rpx 0;
+  margin-bottom: 150rpx;
+  text-align:center;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.search-input{
+  margin: 10px auto;
+  line-height: 12px;
+  width: 92%;
+  color:black;
+}
+
+.button{
+  margin: 20px 0;
+  border-radius: 30px;
+  width: 98%;
+  line-height: 40px;
+
+}
+
+ .ripple {
+      position: absolute;
+      opacity: 0;
+      border-radius: 100%;
+      width: 10px;
+      height: 10px;
+      left: 11%;
+      top: 45%;
+      background-color: #FFFFFF;
+      animation-duration: 6s;
+      animation-name: ripple;
+      animation-iteration-count: infinite;
+      z-index: -1;
+    }
+
+    @keyframes ripple {
+      0% {
+        opacity: 0.1;
+      }
+      100% {
+        width: 700px;
+        height: 700px;
+        left: -70%;
+        top: -330%;
+        border-radius: 700%;
+      }
+    }
+
+
+    @keyframes flame {
+      100% {
+        text-shadow: 0px 1px 4px rgba(255, 255, 255, 0.5), 0px 2px 10px rgba(255, 255, 0, 0.5), 0 10px 20px rgba(255, 128, 0, 0.5), 0 18px 40px rgba(239, 0, 0, 0.5);
+      }
+    }

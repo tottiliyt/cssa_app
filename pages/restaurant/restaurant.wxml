@@ -1,0 +1,82 @@
+
+<view style='height:100rpx;background:#cf3c34;'/>
+
+<view class="card" bindtap='goToCard'>
+ <image src="{{xuelianka}}" class="xuelianka" mode='aspectFit'/>
+  <view>
+      <view style='font-size:32rpx;color:#FD774A'>轻按此处出示您的学联卡 ></view>
+      <view style='opacity:0.5;padding-top:5px;'>在各大餐馆享受最高7.8折优惠</view>
+  </view>
+</view>
+
+<!-- <view style='text-align:center;padding:20px;'>TODO - RESTAURANTS</view> -->
+
+<view style='margin-top:30rpx;' wx:if="{{imgUrls}}">
+    <swiper class="activity" indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{key}}">
+        <swiper-item data-url="{{item.link}}" bindtap="bindWeb">
+          <text class="bottom-left">{{item.title}}</text>
+          <image src="{{item.img}}" class="slide-image" mode="aspectFill"/>
+
+        </swiper-item>
+      </block>
+    </swiper>
+</view>
+
+
+<view class="options">
+  <view class="title">
+    全部商家
+  </view>
+  
+  <picker bindchange="bindPickerChange" value="{{currentPickerValue}}" range="{{sortOptions}}" range-key="name">
+      <view class="filter_btn">
+        <image class="post_icons" src="{{imgDomain}}icon-descending-sorting.png" style="padding:0;"/>
+        排序
+      </view>
+  </picker>
+
+<view class="filter_btn" bindtap="toggleFiler">
+  <image class="post_icons" src="{{imgDomain}}icon-search-black.png" style="padding:0;"/>
+    筛选
+  </view>
+ </view>
+
+
+<view class="filter {{openFilter?'':'filterHide'}}">
+ <input class="search-input" maxlength="50" value="{{query}}" placeholder="输入餐馆名称或选择类型开始筛选..." bindinput="bindSearch"/>
+
+  <view style="width: 100%;margin-top: 10px;">
+    <block wx:for="{{tags}}">
+      <view class="post_tag" style="display:inline-block;" data-value="{{item}}" bindtap="bindTag">{{item}}</view>
+    </block>
+  </view>
+
+</view>
+
+
+<view>
+
+<block wx:for="{{restaurants}}" wx:for-index="idx" wx:key="{{item.id}}">
+  <view class="block" data-id="{{item.id}}" data-idx="{{idx}}" bindtap="goToDetails">
+    <image src="https://cloud-minapp-24046.cloud.ifanrusercontent.com/{{item.id}}.png/!/scale/50" class="rest_img" mode='aspectFill'/>
+    <view class="block_inner">
+      <view class="rest_title">{{item.name}}</view>
+      <view style="overflow-x: scroll;width: 95%;">
+        <text class="post_tag" wx:if="{{item.distance}}">离我 {{item.distance}} km</text>
+        <block wx:for="{{item.tags}}" wx:key="{{item.tags}}">
+          <text class="post_tag">{{item}}</text>
+        </block>
+      </view>
+      <view class="rest_discount">{{item.discount}}</view>
+    </view>
+  </view>
+</block>
+
+</view>
+
+
+  <view class="btn_more" bindtap="goToSuggestion">没有找到想要的餐厅？点击这里用你的投票决定下一家餐厅或商家！</view>
+
+<!-- <web-view src="{{url}}" bindload="webload" binderror="weberror"></web-view> -->

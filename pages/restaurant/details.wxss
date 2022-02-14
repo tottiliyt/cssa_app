@@ -1,0 +1,106 @@
+/* pages/restaurant/details.wxss */
+.header{
+  width: 100%;
+  height: 37vh;
+  z-index: -1;
+  position: relative;
+  background: rgb(226, 226, 226);
+}
+
+page{
+  background: #fcfcfc;
+}
+
+.card {
+  margin-top:-150rpx;
+  margin-left:30rpx;
+  margin-right:30rpx;
+  background-color: #fff;
+  padding: 15px 20px;
+  box-shadow:0px 3px 10px rgba(255, 17, 17, 0.281);
+  word-break:break-all;
+  border-radius: 6px;
+
+  animation-name: enter;
+  animation-duration: 1s;
+
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.back_icon{
+  position: fixed;
+  top: 50px;
+  left: 20px;
+  max-width: 35px;
+  max-height:35px;
+  opacity: 255;
+}
+
+.post_icons {
+max-width: 25px;
+max-height: 25px;
+}
+
+.xlk {
+
+  margin: 0 20px;
+  padding: 30px 0;
+
+  word-break:break-all;
+  animation-name: enter;
+  animation-duration: 1s;
+
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-evenly;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.2);
+  box-sizing: border-box;
+}
+
+.xuelianka{
+  height:45px;
+  width:70px;
+  box-shadow:0px 3px 10px rgba(0, 0, 0, 0.2);
+  background: #fcebd6;
+  opacity: 0.8;
+  border-radius: 3px;
+  margin-right: 15px;
+}
+
+.detail_row{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 10px 0;
+  color: rgb(59, 59, 59);
+
+
+}
+
+.rows{
+ margin: 0 20px;
+ padding: 30px 10px;
+ border-bottom: 1px solid rgba(192, 192, 192, 0.2);
+}
+
+.detail_row .post_tag{
+  font-size: 12px;
+  align-self: center;
+}
+
+.detail_row .post_icons{
+  opacity: 1;
+  margin: 0 10px;
+}
+
+.post_tag{
+  font-size: 14px;
+}
+.row_inner{
+  flex-grow: 1;
+  padding: 0 10px;
+}

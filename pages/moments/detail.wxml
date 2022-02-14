@@ -1,0 +1,125 @@
+<!--pages/moments/detail.wxml-->
+  <view class='keyboard_placeholder' wx:if="{{showModal}}" />
+
+  <view class="comment_title" style="padding-top: 30px;" wx:if="{{post.title}}">{{post.title}}</view>
+
+<view class="post" bindtap="tapItem">
+      
+      <view class="view_preinfo" style="padding-bottom:10px;" bindtap="goToProfile" data-id="{{post.user_id}}">
+        <image class="post-avatar" src="{{post.avatar}}" mode="cover"></image>
+        <view class='post_zone'>{{post.spacename}}</view>
+        <view style="padding-left:90rpx;">
+          <view class="post_user">{{post.user}}</view>
+          <view class="post_time">{{post.created_at}} </view>
+        </view>
+      </view>
+
+      <text class="post_title" bindlongtap='toClipboard' data-content='{{post.content}}'>{{post.content}}</text>
+
+      <view>
+        <block wx:for="{{post.tags}}" wx:key="{{post.TagID}}">
+          <text class="post_tag" style="{{post.BackgroundColor}};">{{item.TagName}}</text>
+        </block>
+      </view>
+
+      <!-- images -->
+      <view style='padding-top:10px;' wx:if="{{post.images}}">
+        <scroll-view class="images" scroll-x="true" style=" white-space: nowrap; display: flex ;">
+          <block wx:for="{{post.images}}" wx:key="{{post.TagID}}" wx:for-index="idx2" wx:for-item="img">
+              <image 
+              bindtap='goToImage' data-url="{{img}}" data-arr='{{post.images}}'
+              style="width: 240rpx; height: 240rpx; padding-right:10px"
+              mode="aspectFill"
+              src="{{img}}{{post.imageCompressed[idx2]}}"
+              />
+          </block>
+          <text style="margin-right:30px"></text>
+        </scroll-view>
+      </view>
+
+
+</view>
+
+
+<!-- actions -->
+<view class='post action_bar' wx:if="{{post.contact}}">
+  <view class="ucl_bar_actions" bindtap='goToCopy'>
+      <image class="post_icons" src="{{imgCopy}}" style='opacity:1'/>
+      复制对方微信号或网址
+  </view>
+</view>
+
+
+  <!-- admin notice -->
+  <view wx:if="{{!post_owner && isAdmin}}" class="post" style='background: orange; color:white;margin-top:30px;text-align:center;font-size:12px;' >
+    尊敬的小程序管理员，您有权删除此贴和其下任何评论，请谨慎操作。
+  </view>
+
+<!-- comment -->
+<view class="post" bindtap="tapItem" style='margin-top:30px;padding-left:0;padding-right:0;'>
+  <view class="comment_title">全部评论</view>
+      <view style='font-size:14px' wx:if="{{post.comments}}">
+        <block wx:for="{{post.comments}}" wx:key="{{post.comments.comment_id}}">
+            <view class="comment_line">
+              <view class="view_preinfo" style="padding-bottom:10px;" >
+                <image class="post-avatar" bindtap="goToProfile" data-id="{{item.user_id}}" style='width: 50rpx;height: 50rpx;' src="{{item.avatar}}" mode="cover"></image>
+                <view wx:if="{{item.user_id == ifanrID || isAdmin}}" bindtap="confirmDeleteComment" data-id="{{item.comment_id}}" data-user="{{item.user_id}}" class='post_zone' style='color:darkred'>删除</view>
+                <view style="padding-left:60rpx;" bindtap="goToProfile" data-id="{{item.user_id}}" >
+                  <view class="post_user">{{item.user}}</view>
+                  <view class="post_time">{{item.time}} </view>
+                </view>
+              </view>
+              <view style='padding-left:80rpx' bindtap='reply' data-name='{{item.user}}' bindlongtap='toClipboard' data-content='{{item.content}}'>{{item.content}}</view>
+            </view>
+        </block>
+      </view>
+
+  <view wx:else class="post_loading_text">还没有评论</view>
+</view>
+
+<!-- actions -->
+<view class='post action_bar'>
+  <view class="ucl_bar_actions" bindtap='goToHome'>
+      <image class="post_icons" src="{{iconHome}}" style='opacity:1'/>
+      返回首页
+  </view>
+  <view wx:if="{{post_owner || isAdmin}}" class="ucl_bar_actions" bindtap="confirmDeletePost">
+  <image class="post_icons" src="{{imgDelete}}" style='opacity:1'/>
+    <text style='color:darkred;'>删除</text>
+  </view>
+</view>
+
+<!-- modal mask -->
+<view class="mask" bindtap='hideModal' wx:if="{{showModal}}"></view>
+<!-- comment modal -->
+<view class='comment' wx:if="{{showModal}}">
+  <form bindsubmit="bindFormSubmit">
+      <textarea cursor-spacing="10px" fixed="{{true}}" show-confirm-bar="{{false}}" class='comment_text' style="width:70%;float:left" auto-focus="true" auto-height="true" placeholder="添加回复..." name="textarea" auto-focus maxlength="500" value="{{replyto}}"></textarea>
+      <button bindtap="bindMsg" style="width:20%;float:right;margin-right:19px;" class="button-submit" size="mini" type="primary" form-type="submit">发布</button>
+
+  </form>
+</view>
+
+
+
+
+  <view class="ucl_bottom_bar" wx:if="{{!showModal}}">
+
+      <view class="post_actions">
+        <button class="ucl_bar_btn post_actions" open-type="share">
+          <image class="post_icons" src="{{imgShare}}"/>
+          分享
+        </button>
+      </view>
+      <view class="post_actions" bindtap='showModalAndClear'>
+          <image class="post_icons" src="{{imgComment}}"/>
+          评论</view>
+      <view class="post_actions" bindtap='invokeLike' data-idx="{{idx}}" id="{{post.post_id}}">
+          <image class="post_icons" style="{{post.liked ? 'opacity:1;' : ''}}" src="{{post.liked ? imgLiked : imgLike}}"/>
+          赞{{post.likes > 5 ? (" ("+post.likes+")"):""}}</view>
+
+  </view>
+  <view class='ucl_bar_placeholder' wx:if="{{!showModal}}" />
+
+
+

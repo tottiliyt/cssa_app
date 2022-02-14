@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#fcfcfc",
+  "navigationBarTitleText": "发布",
+  "disableSwipeBack": true
+}

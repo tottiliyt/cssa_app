@@ -1,0 +1,160 @@
+{
+    "description": "Project configuration file",
+    "packOptions": {
+        "ignore": []
+    },
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "enhance": false,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "enableEngineNative": false,
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "disableUseStrict": false,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false,
+        "minifyWXML": true
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.10.4",
+    "appid": "wx2da111907bb1ef24",
+    "projectname": "Mini-CSSA",
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "isGameTourist": false,
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "search": {
+            "list": []
+        },
+        "conversation": {
+            "list": []
+        },
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "id": -1,
+                    "name": "pages/me/me",
+                    "pathName": "pages/me/me",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/discover/discover",
+                    "pathName": "pages/discover/discover",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/publish/publish",
+                    "pathName": "pages/publish/publish",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/ucl/timetable/timetable",
+                    "pathName": "pages/ucl/timetable/timetable",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 5,
+                    "name": "pages/publish/publish",
+                    "pathName": "pages/publish/publish",
+                    "query": "space_id=6",
+                    "scene": null
+                },
+                {
+                    "id": 6,
+                    "name": "pages/publish/publish",
+                    "pathName": "pages/publish/publish",
+                    "query": "space_id=11&content=#Instagram投稿#\\n照片Credit：\\n照片内容：",
+                    "scene": null
+                },
+                {
+                    "id": 7,
+                    "name": "pages/moments/detail",
+                    "pathName": "pages/moments/detail",
+                    "query": "id=572",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/restaurant/restaurant",
+                    "pathName": "pages/restaurant/restaurant",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/card/card",
+                    "pathName": "pages/card/card",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 10,
+                    "name": "pages/restaurant/details",
+                    "pathName": "pages/restaurant/details",
+                    "query": "id=82&restaurant={\"id\":\"82\",\"orders\":null,\"name\":\"蜀一蜀二 Shu La La\",\"address\":\"205-207 Holloway Road, London N7 8DL\",\"longlat\":\"51.5508892,-0.1103311\",\"discount\":\"现金微信支付宝支付9折；外卖2英里内免费送餐\",\"discount_code\":null,\"tags\":[\"烤串\"],\"price\":null,\"category\":\"餐厅\",\"phone\":null,\"intro\":null,\"distance\":\"5.48\"}",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/restaurant/details",
+                    "pathName": "pages/restaurant/details",
+                    "query": "id=1",
+                    "scene": null
+                },
+                {
+                    "id": 12,
+                    "name": "pages/index/index",
+                    "pathName": "pages/index/index",
+                    "query": "web=covid19.api.jhucssa.com",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

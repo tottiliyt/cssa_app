@@ -1,0 +1,7 @@
+{
+    "backgroundColor": "#E02C2D",
+    "enablePullDownRefresh":true,
+    "backgroundTextStyle": "dark",
+    "navigationStyle":"custom",
+    "disableSwipeBack": true
+}

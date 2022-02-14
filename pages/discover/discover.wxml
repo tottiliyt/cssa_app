@@ -1,0 +1,141 @@
+<block wx:if="{{maintenance}}">
+  <view>
+    <image src="https://cloud-minapp-24046.cloud.ifanrusercontent.com/maintainace.png" class="search_placeholder" mode='aspectFit'/>
+  </view>
+  <view class="post_loading_text" style='bottom:0;'>社区功能正在努力升级维护中，其他功能均可正常使用，稍后再来看看吧！</view>
+</block>
+
+
+<block wx:else>
+  <!-- nav tab -->
+  <block wx:if="{{navTabNumber>1}}">
+    <view class='nav-placeholder'/>
+
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;" class='float-navigation'  >
+      <view class='navigation' style='width:{{160*navTabNumber}}rpx;background:white'>
+
+      <view class="{{currentNavtab==idx ? 'navigation-item-selected' : ''}}" wx:for="{{navTab}}" wx:key="{{key}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" data-name="{{itemName.name}}"  data-space="{{itemName.id}}" bindtap="switchTab">
+          {{itemName.name}}
+      </view>
+
+      </view>
+    </scroll-view>
+
+  </block>
+
+
+<!-- "添加到我的小程序" banner -->
+  <view wx:if="{{!showedaddto}}" style='background-color: rgb(252, 252, 252);'>
+    <image bindtap='hideAdd' src="{{addto}}" style='width:100%;height:50px;background-color: rgb(252, 252, 252);' mode='aspectFit'/>
+  </view>
+
+
+
+<!-- publish block -->
+ <view bindtap="{{userInfo? 'goToPublish':'pleaseLogin'}}" class="post publish" >
+  <image class="post-avatar" src="{{avatar}}" mode="cover"></image>
+    <view class="publish-textarea">
+      <text class="publish-text">分享活动，问答，交易，新鲜事...</text>
+      
+    </view>
+    <image style='width:25px;height:25px;margin-right:10px;top:5px;opacity:0.5;margin:0' src="{{imgCam}}"/>
+  </view>
+
+
+
+      <!-- <view wx:if="{{eventUrls[0]}}" style="height:55px;background:url('{{eventUrls[0].img}}');background-size: cover;background-position: center;" bindtap="bindWeb" data-url="{{eventUrls[0].links}}" class="block block_fullwidth" > -->
+    <block wx:for="{{eventUrls}}" wx:for-index="idx" wx:key="{{item.id}}">
+      <view wx:if="{{item}}" class="post" style="height:70rpx;background:url('{{item.img}}');background-size: cover;background-position: center;" bindtap="bindWeb" data-url="{{item.link}}">
+      </view>
+
+       </block>
+
+
+
+
+
+
+<!-- feeds block -->
+ <block wx:for="{{feeds}}" wx:for-index="idx" wx:key="{{item.post_id}}">
+
+      <!-- title -->
+    <view class="post" data-para="{{item}}" bindtap="goToDetails" bindlongtap='toClipboard' data-id='{{item.post_id}}' data-url='{{item.url}}' data-content='{{item.content}}' data-idx="{{idx}}">
+      
+      <view class="view_preinfo">
+        <view class="post_title">{{item.title? item.title : item.content}}</view>
+        <view class='post_zone' wx:if="{{item.spacename}}">{{item.spacename}}</view>
+        
+      </view>
+
+      <!-- <text class="post_title" bindtap='goToDetails' bindlongtap='toClipboard' data-id='{{item.post_id}}' data-content='{{item.content}}' data-idx="{{idx}}">{{item.content}}</text> -->
+
+      <!-- images -->
+      <view style='padding-top:10px;' wx:if="{{item.images}}">
+        <scroll-view class="images" scroll-x="true" style=" white-space: nowrap; display: flex ;">
+          <block wx:for="{{item.images}}" wx:key="{{item.id}}" wx:for-index="idx2" wx:for-item="img">
+              <image 
+              data-url="{{img}}" data-arr='{{item.images}}'
+              style="width: 180rpx; height: 180rpx; padding-right:10px"
+              mode="aspectFill"
+              src="{{img}}{{item.imageCompressed[idx2]}}"
+              />
+          </block>
+          <text style="margin-right:30px"></text>
+        </scroll-view>
+      </view>
+
+
+
+      <!-- tags -->
+      <view>
+        <block wx:for="{{item.tags}}" wx:key="{{item.TagID}}">
+          <text class="post_tag" style="{{item.BackgroundColor}};">{{item.TagName}}</text>
+        </block>
+      </view>
+
+      <!-- Actions -->
+      <view class="post_action_list" style="overflow: hidden;">
+
+        <view class='post_info'>
+          <image bindtap="bindViewTap" class="post-avatar post-avatar-resize" src="{{item.avatar}}" mode="cover"></image>
+          <view class="post_user">{{item.user}}</view>
+          <view class="post_time">{{item.is_updated ? "更新于 ":""}}{{item.time}} </view>
+        </view>
+        
+      
+      </view>
+    </view>
+
+  </block>
+
+  <view class="post_loading_text" style="margin-bottom:100rpx;">{{loading?"正在加载...":"上拉加载更多"}}</view>
+  
+
+<view style="position:fixed; bottom: 0; width: 100%; ">
+  <!-- publish options list -->
+  <scroll-view scroll-x class="scrollview_x {{publish_options? '' : 'zero_opacity'}}">
+    <view style="padding:0 20px;">
+      <block wx:for="{{options}}" wx:key="{{item.name}}">
+        <view class="grd_button float_button inline_button {{item.color}}" bindtap="goToPublishWithSpace" data-space="{{item.space}}">
+          <image class="post_icons grd_button_icon" src="{{imgPlus}}"/>
+          {{item.name}}
+        </view>
+      </block>
+
+      <view class="grd_button float_button inline_button" bindtap="hidePublishOptions">
+        取消
+      </view>
+    </view>
+
+
+  </scroll-view>
+
+  <!-- single publish button -->
+  <!-- {{userInfo? 'showPublishOptions':'pleaseLogin'}} -->
+  <view class="grd_button float_button {{publish_options? 'publish_button_hide' : ''}}" bindtap="{{userInfo? 'goToPublish':'pleaseLogin'}}">
+    <image class="post_icons grd_button_icon" src="{{imgPlus}}"/>
+    发布
+  </view>
+</view>
+
+</block>

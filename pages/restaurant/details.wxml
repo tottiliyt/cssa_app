@@ -1,0 +1,80 @@
+<!--pages/restaurant/details.wxml-->
+<view class='navbar_placeholder nav_placeholder_show'>
+  <image class="post_icons back_icon" src="{{imgDomain}}icon-back.png" style="padding:0;" bindtap="goBack"/>
+
+</view>
+
+<image src="https://cloud-minapp-24046.cloud.ifanrusercontent.com/{{item.id?item.id:0}}.png" class="header" mode='aspectFill'/>
+
+
+
+
+<view class="card">
+  <view class="rest_title" style="font-size: 20px;white-space: normal;">{{item.name}}</view>
+      <view style="margin: 10px 0; font-size: 17px;">
+        <text class="post_tag"  wx:if="{{item.distance}}">离我 {{item.distance}} km</text>
+        <block wx:for="{{item.tags}}" wx:key="{{item.tags}}">
+          <text class="post_tag" style="{{item.BackgroundColor}};">{{item}}</text>
+        </block>
+      </view>
+    <view class="rest_discount" style="white-space: normal;">{{item.discount}}</view>
+</view>
+
+<view class="xlk" bindtap='goToCard'>
+ <image src="{{xuelianka}}" class="xuelianka" mode='aspectFit'/>
+  <view>
+      <view style='font-size:32rpx;color:#FD774A'>轻按此处向店员出示学联卡 ></view>
+      <view style='opacity:0.5;padding-top:5px;'>立即享受此餐馆专属折扣</view>
+  </view>
+</view>
+
+<view class="rows">
+  <view class="detail_row" wx:if="{{item.phone}}" bindtap="goToPhoneCall">
+    <image class="post_icons" src="{{imgDomain}}icon-phone.png" style="padding:0;"/>
+    <view class="row_inner">
+      {{item.phone}}
+    </view>
+     <view class="post_tag" style="line-height: 1.6;">拨打电话</view>
+  </view>
+
+  <view class="detail_row" wx:if="{{item.discount}}">
+    <image class="post_icons" src="{{imgDomain}}icon-discount.png" style="padding:0;"/>
+    <view class="row_inner">
+      {{item.discount}}
+    </view>
+  </view>
+
+  <view class="detail_row" wx:if="{{item.address}}" bindtap="goToMap">
+    <image class="post_icons" src="{{imgDomain}}icon-marker.png" style="padding:0;"/>
+    <view class="row_inner">
+      <view>{{item.address}}</view>
+    </view>
+      <view class="post_tag" style="line-height: 1.6;">打开地图</view>
+  </view>
+  
+</view>
+
+<view class="rows" wx:if="{{item.intro}}">
+ <view class="detail_row">
+    <image class="post_icons" src="{{imgDomain}}icon-list.png" style="padding:0;"/>
+    <view class="row_inner">
+      {{item.intro}}
+    </view>
+  </view>
+</view>
+
+
+  <view class="ucl_bottom_bar">
+    <view class="ucl_bar_actions" bindtap='goBack'>
+        <image class="post_icons" src="{{iconHome}}" style='opacity:1'/>
+        返回美食专区
+    </view>
+
+    <view>
+    <button class="ucl_bar_actions ucl_bar_btn" open-type="share">
+        <image class="post_icons" src="{{iconForward}}" style='opacity:1'/>
+        分享给朋友
+    </button>
+    </view>
+  </view>
+  <view class='ucl_bar_placeholder' />

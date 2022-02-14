@@ -1,0 +1,272 @@
+<import src="../../app/template.wxml" />
+
+<view class='navbar_placeholder {{showPlaceholder? "nav_placeholder_show":"nav_placeholder_hide"}}'></view>
+
+<!-- weather and date -->
+<view style='margin-left:80rpx;'>
+	<view class='date_text {{animationClass}}' bindtransitionend='finishDateTitleTransition'>{{todayDate}}</view>
+	<view class='weather_text'>
+		<image class="post_icons" src="{{weatherIcon}}" style="padding:0;opacity:1" />
+		{{todayWeather}}
+	</view>
+</view>
+
+
+<!-- horizontal slider -->
+<view style='margin-top:30rpx;'>
+	<swiper class="activity" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<block wx:for="{{imgUrls}}" wx:key="{{key}}">
+			<swiper-item data-url="{{item.link}}" bindtap="bindWeb">
+				<text class="bottom-left">{{item.title}}</text>
+				<image src="{{item.img}}" class="slide-image" mode="aspectFill" />
+
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+
+
+
+<!-- notice board -->
+<view wx:if="{{notice}}" class="post" style='font-size:12px;color:grey;margin-bottom:20px;'>
+	<image class="post_icons" src="{{imgComment}}" style="padding:0;" />
+	{{notice}}
+</view>
+
+
+<!-- events -->
+<block wx:for="{{eventUrls}}" wx:for-index="idx" wx:key="{{item.id}}">
+
+	<view wx:if="{{item}}" class="block block_fullwidth" style="height:55px;margin-bottom: 10px;background:url('{{item.img}}');background-size: cover;background-position: center;" bindtap="bindWeb" data-url="{{item.link}}">
+	</view>
+
+</block>
+
+
+<!-- admin notice -->
+<view wx-if="{{isAdmin && showIsAdmin}}" class="block block_fullwidth admin">
+	尊敬的小程序管理员，您好！
+</view>
+
+<!-- UCL COVID-19 Statistics -->
+
+<block wx-if="{{uclCovid && covid && covid.enabled}}">
+	<view class="title">
+		<image class="title_icon" src="{{imgVirus}}" />
+		JHU疫情实时概况
+	</view>
+
+	<view class="ucl-covid-container">
+		<!-- On Campus -->
+		<view class="block item">
+			<view class="increase">昨日新增 <text class = "data">+{{uclCovid.offCampus.increase}}</text></view>
+			<view class = "total">{{uclCovid.offCampus.total}}</view>
+			<view class="type" >校外确诊</view>
+		</view>
+		<!-- Off Campus -->
+		<view class="block item">
+			<view class="increase">昨日新增 <text class = "data" >+{{uclCovid.onCampus.increase}}</text></view>
+			<view class = "total">{{uclCovid.onCampus.total}}</view>
+			<view class="type" >校内确诊</view>
+		</view>
+	</view>
+</block>
+
+<!-- timetable -->
+<!-- <view class="title">
+	<image class="title_icon" src="{{imgCalendar}}" />
+	个人时间表
+</view>
+
+<block wx:if="{{ucl}}">
+
+	<view class='out'>
+		<scroll-view scroll-x wx:if="{{timetable[0].sessions && timetable[0].sessions.length > 0}}">
+
+			<block wx:for="{{timetable[0].sessions}}" wx:key="{{item.id}}" wx:for-item="session">
+				<view class="block block_repeated block_timetable {{loaded_tb?'':'block-loading'}}" bindtap="goToTbLocation" data-loc="{{session.location}}">
+					<view style="display:flex; height:100%; flex-direction: horizontal; vertical-align:middle;align-items: center;">
+						<view style="width:30%; text-align:center; color:#f48641">
+							<view>{{session.start_time}}</view>
+							<view>{{session.end_time}}</view>
+						</view>
+
+						<view style='width:70%;padding-left:10px'>
+
+							<view wx:if="{{session.module.lecturer.name}}" class="tb_secondary">
+								{{session.module.lecturer.name}}
+							</view>
+							<view wx:else class="tb_secondary">
+								{{session.module.module_id}}
+							</view>
+
+							<view class="tb_course" style='{{session.session_title.length > 26 ? "font-size: 12.5px" : ""}}'>
+								{{session.session_title}}
+							</view>
+
+							<view wx:if="{{session.location.name}}" class="tb_secondary">
+								{{session.location.name}} {{session.location.site_name}}
+							</view>
+							<view wx:else class="tb_secondary">
+								{{session.session_type_str}}
+							</view>
+
+						</view>
+					</view>
+				</view>
+			</block>
+
+			<view class="show_more" bindtap="goToTimetable" style='height:150rpx;'>
+				<image class="more_icon" src="{{imgMore}}" />
+				<view>打开课表</view>
+			</view>
+
+		</scroll-view>
+
+		<view class="block block_fullwidth" wx:else>
+			<view class="center_text" style="margin-bottom:15px;" bindtap="goToTimetable">
+				今天又是没有课的一天~
+			</view>
+		</view>
+
+	</view>
+
+	<view class="btn_more" bindtap="goToTimetable">打开课表</view>
+
+</block>
+
+<block wx:else>
+	<view class="block block_fullwidth">
+		<view class="center_text">
+			您需要登录并绑定UCL账号后才能查看课表
+		</view>
+		<view class="btn_more" bindtap="goToMe" style="width:80px;margin:5px auto;">立即登录</view>
+	</view>
+</block> -->
+
+
+
+
+<!-- covid -->
+<block wx-if="{{(covid && covid.enabled)}}">
+	<view class="title">
+		<image class="title_icon" src="{{imgVirus}}" />
+		美国疫情实时概况
+	</view>
+
+	<view bindtap="goToCovid" class="block block_fullwidth covid">
+	</view>
+
+</block>
+
+
+
+
+
+<!-- library -->
+<!-- <view class="title">
+	<image class="title_icon" src="{{imgLibrary}}" />
+	图书馆实时余位
+</view>
+
+<view class="block block_fullwidth" bindtap="goToWorkspace">
+	<block wx:for="{{library}}" wx:key="{{item.id}}" wx:for-item="item">
+		<view class="overview-progress">
+			<view class="progress-wrapper {{loaded_lib ?'':'progress-loading'}}">
+				<view class="progress" style="width:{{item.pgrs}}%;background:{{item.bg}}">{{item.name}}</view>
+				<view class="indicator">{{item.condition}}</view>
+			</view>
+			<view class="remain">{{item.remain}}</view>
+		</view>
+	</block>
+</view>
+
+<view class="btn_more" style='margin-top:15px;' bindtap="goToWorkspace">查看更多图书馆 - 实时空位图</view> -->
+
+
+
+
+
+
+
+
+
+<!-- community -->
+<view class="title">
+	<image class="title_icon" src="{{imgCommunity}}" />
+	社区动态
+</view>
+
+<view class='out'>
+	<scroll-view scroll-x>
+
+		<block wx:for="{{posts}}" wx:key="{{item.id}}" wx:for-item="item">
+			<view class="block block_repeated block_post {{loaded_post?'':'block-loading'}}" bindtap="goToCommunity">
+				<view class="post_layout">
+					<view class="posts_content">
+						<view class="posts_title">
+							{{item.title? item.title : item.content}}</view>
+						{{item.content}}
+					</view>
+					<view class="posts_time">{{item.time}}</view>
+				</view>
+
+			</view>
+		</block>
+
+		<view class="show_more" bindtap="goToCommunity" style='height:240rpx;'>
+			<image class="more_icon" src="{{imgMore}}" style='padding-top:40rpx;' />
+			<view>前往社区</view>
+		</view>
+
+	</scroll-view>
+</view>
+
+<view class="btn_more" bindtap="goToCommunity">前往社区</view>
+
+
+
+
+
+<!-- transport for london -->
+<view class="title">
+	<image class="title_icon" src="{{imgBus}}" />
+	TfL交通状态
+</view>
+
+
+<wxs module="line_color">
+	//wx script function to get line color by order, as wxml doesn't support function call
+	var lineIndex = 0;
+	var getNextColor = function(colorArray) {
+		return colorArray[lineIndex++];
+	}
+	module.exports.getNextColor = getNextColor;
+</wxs>
+
+<view class='out' bindtap="goToTfl">
+	<scroll-view scroll-x>
+
+		<block wx:for="{{tube}}" wx:key="{{tube.id}}" wx:for-index="idx">
+			<view class="block block_repeated block_tube {{loaded_tube?'':'block-loading'}}" bindtap="">
+				<view class="tube_line" style="background:{{line_color.getNextColor(tubeColours)}}">{{item.friendly_name}}</view>
+				<view class="tube_status" style="color:{{(item.status=='Good Service') ? 'black' : '#ff6600'}}">{{item.status}}</view>
+			</view>
+		</block>
+
+		<view class="show_more" bindtap="" style='height:150rpx;'>
+			<image class="more_icon" src="{{imgMore}}" />
+			<view>更多交通状态</view>
+		</view>
+
+	</scroll-view>
+</view>
+
+<view class="btn_more" bindtap="goToTfl">更多交通状态</view>
+
+
+<button class="grd_button" style="width: 200px; margin: 60px auto 30px auto;" open-type="share">
+	<image class="post_icons grd_button_icon" src="{{imgShare}}" />
+	分享学联社区给好友</button>
+
+<template is="footer_copyright" data="{{home}}" />

@@ -1,0 +1,7 @@
+<template name="footer_copyright">
+  <view style="text-align:center;font-size:11px;margin:20px 0;opacity:0.3;" bindtap='goToAbout'>
+    <view wx:if='{{home}}'>Developed with ❤️ by JHU Students</view>
+    <view wx:else style="padding: 0 20px;">填写版权信息</view>
+    <view>JHUCSSA 2021</view>
+  </view>
+</template>

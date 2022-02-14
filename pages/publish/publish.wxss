@@ -1,0 +1,44 @@
+/* pages/publish.wxss */
+page{
+  background: #fafafa;
+}
+
+textarea {
+  width: 700rpx;
+  padding: 25rpx 0;
+}
+
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+.section{
+  font-size: 15px;
+  padding: 20px;
+  /* width:100%; */
+  background: white;
+  /* margin-bottom: 25px; */
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.button-submit{
+  margin: 20px;
+}
+
+.image{
+  width: 14vh; height: 14vh; padding-right:10rpx;padding-bottom:10rpx;
+}
+
+
+.picker{
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 16px;
+  color: gray;
+}

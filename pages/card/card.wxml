@@ -1,0 +1,112 @@
+<!--pages/card/card.wxml-->
+
+<block wx:if="{{loaded && authed==false}}" >
+<view class="enter">
+  <view class="clock" style="font-size: 24px; color: white;text-align:center;margin: 12%;margin-bottom: 0;">已购买学联卡？</view>
+
+  <view class="card_block">
+    <view>激活您的电子版学联卡</view>
+      <view>
+        <input class="search-input" maxlength="50" value="{{ordernum}}" placeholder="订单编号 (Order Number)" bindinput="bindEnterOrder"/>
+            <view style="font-size:11px;opacity:0.39;" bindtap="bindExample">您可以在 Membership 购买成功的确认 Email 中找到您的 Order Number, 在 Outlook 中搜索 'UCL order confirmation' 即可快速找到该邮件。点击此处查看范例</view>
+
+        <input class="search-input" maxlength="50" value="{{email}}" placeholder="Union 官网注册邮箱" bindinput="bindEnterEmail"/>
+    </view>
+    <view style="font-size:11px;opacity:0.39;" bindtap="bindBuy">您的Union注册邮箱一般为 first.last.year@ucl.ac.uk 格式，也有可能为您的ucl用户名邮箱。若您不知道您的邮箱地址，可以前往 Student Union 官网登录后进入 My Profile 页面查看</view>
+
+    <button class="button" type="primary" loading="{{loading}}" 
+    bindtap="bindActivate"> 一键激活 </button>
+  </view>
+
+  <view class="clock" style="font-size: 24px; color: white;text-align:center;margin: 12%;margin-bottom: 0;">还没有购买学联卡？</view>
+  <view class="card_block">
+    <view class="card" style='{{cardStyle}}{{cardRotation}};width: 330rpx;height: 200rpx;margin:30px auto;background:url("https://api.jhucssa.com/api/img/xlk19.png");background-size: cover;'></view>
+    <view style="font-size:11px;opacity:0.6;">仅需5镑，享受百大伦敦餐厅折扣，最低可达7.8折！点击下方按钮立即购买</view>
+  
+  <button class="button" type="primary" loading="{{loading}}" 
+    bindtap="bindBuy"> 立即购买 </button>
+  
+  </view>
+
+  <view class="usermotto" bindtap='goToAbout'>
+      <image src="{{logo}}" style='max-width:50%;height:120rpx' mode='aspectFit'/>
+    </view>
+</view>
+</block>
+
+
+<block wx:if="{{loaded && authed==true}}">
+<view class="enter">
+  <view class="content">
+    <view class="scene">
+            <view class="card" style='{{cardStyle}}{{cardRotation}}'>
+                <image id="cardMiddle" class="cardOverlay" src="https://cloud-minapp-24046.cloud.ifanrusercontent.com/card-middle.png" style="transform: translateZ(20px);"/>
+                <image id="cardTop" class="cardOverlay" src="https://cloud-minapp-24046.cloud.ifanrusercontent.com/card-top.png" style="transform: translateZ(40px);"/>
+            </view>
+    </view>
+  </view>
+
+  <view class="text">左右旋转手机以检查卡片真实性</view>
+
+    <view class="card_block" wx:if="{{userInfo && ucl}}" style="position: relative;">
+        <view class="ripple" style="animation-delay:0.8s;"></view>
+        <view class="ripple"></view>
+        <view class="userinfo" bindtap="bindProfile">
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <text class="userinfo-nickname">{{ucl.full_name}}</text>
+          <view class="userinfo-text">
+            <view>有效持卡人</view>
+            <view>Card Holder</view>
+          </view>
+        </view>
+    </view>
+
+
+  <view class="card_block" wx:if="{{!restaurant}}">
+
+        <view class="rest_name">
+          <view style="line-height:30px;text-align:center;opacity:0.5;">商家信息载入中...</view>
+        </view>
+
+    </view>
+
+
+    <view class="card_block" wx:if="{{restaurant}}" style="padding: 0;">
+      <view class="rest_flex" style="padding: 25px;">
+
+        <view class="rest_name">
+          <view style="line-height:30px;">{{restaurant.name}}</view>
+          <view style="font-size:12px;padding-right:20px;opacity:0.7;">{{restaurant.discount}}</view>
+          <view wx:if="{{restaurant.discount_code}}" style="font-size:12px;line-height:25px;">折扣码 - {{restaurant.discount_code}}</view>
+        </view>
+
+        <view bindtap="bindChange">
+          <view class="post_tag" style="opacity:0.7;">更换商家</view>
+        </view>
+      </view>
+
+        <view class="confirm">
+        {{confirmationText}}
+        
+        </view>
+        <view class="rest_flex" wx:if="{{showConfirmation}}">
+          <view class="button_yn" bindtap="bindNoFeedback" style="border-right: solid 1px rgba(119, 119, 119, 0.5);">否</view>
+          <view class="button_yn" bindtap="bindYesFeedback">是</view>
+        </view>
+    </view>
+
+
+    <view class="card_block" wx:if="{{date}}">
+      <view class="clock">
+        <view>{{date}}</view>
+        <view style="font-size:30px;">{{time}}</view>
+        <view>VALID CARD 有效卡</view>
+      </view>
+    </view>
+
+    <view class="usermotto" bindtap='goToAbout'>
+      <image src="{{logo}}" style='max-width:50%;height:120rpx' mode='aspectFit'/>
+    </view>
+  </view>
+
+</block>

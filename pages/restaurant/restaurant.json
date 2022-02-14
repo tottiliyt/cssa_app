@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "backgroundColor": "#cf3c34",
+  "enablePullDownRefresh": true,
+  "disableSwipeBack": true
+}
